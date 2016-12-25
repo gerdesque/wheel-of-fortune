@@ -1,0 +1,41 @@
+body {
+  padding: 20px 40px;
+  font-family: "Verdana";
+}
+
+*{
+  text-align: center;
+}
+
+.well {
+  background-color: #eee;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+}
+
+.secretWord {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  font-size: 3rem;
+}
+
+.secretWord ul li span {
+  display: block;
+  width: 50px;
+  height: 65px;
+  margin: 2px;
+  float: left;
+  font-size: 40px;
+}
+.empty-letter {
+  background-color: orange;
+}
+
+.hide-letter {
+  background-color: darkgrey;
+}
+
+.show-letter {
+  background-color: white;
+}

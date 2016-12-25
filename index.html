@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="wheel">
+
+<head>
+	<title>Wheel of Fortune</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+	<script src="src/wheel.module.js"></script>
+	<script src="src/wheel.controller.js"></script>
+</head>
+
+<body>
+	<div class="container-fluid" ng-controller="WheelController">
+		<!-- phrase -->
+		<form ng-submit="addWord()">
+			<div class="form-group">
+				<input type="password" id="newWord" ng-model="newWord" placeholder="Neues Wort eingeben">
+				<button type="submit" class="btn btn-default">Wort hinzufügen</button>
+			</div>
+		</form>
+
+		<div class="well">
+			<!-- secretWord -->
+			<div class="secretWord">
+				<ul class="list-inline">
+					<li ng-repeat="letter in secretWord">
+						<span class="empty-letter" ng-show="letter.empty"></span>
+						<span class="show-letter" ng-show="letter.hyphen">{{ letter.name }}</span>
+						<span class="hide-letter" ng-hide="letter.chosen || letter.empty || letter.hyphen"></span>
+
+						<audio id="ding" src="assets/ding.mp3"></audio>
+						<span class="show-letter"
+						onmouseover="document.getElementById('ding').play()"
+						onmouseout="document.getElementById('ding').currentTime = 0;"
+						ng-mouseover=" letter.touched = true"
+						ng-show="!letter.touched && letter.chosen && !letter.empty"></span>
+
+						<span class="show-letter" ng-show="letter.touched && letter.chosen && !letter.empty">{{ letter.name }}</span>
+					</li>
+				</ul>
+
+				<!-- letters -->
+				<div class="letters">
+					<ul class="list-inline">
+						<li ng-repeat="letter in letters">
+							<audio id="buzzer" src="assets/buzzer.mp3"></audio>
+							<button class="btn btn-primary letter-button" ng-disabled="letter.chosen" ng-click="try(letter);">{{letter.name}}</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- reset -->
+		<button ng-click="reset()" class="btn btn-primary btn-large">Neues Spiel</button>
+	</div>
+</body>
+
+</html>
