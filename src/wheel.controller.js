@@ -1,5 +1,5 @@
 wheel.controller('WheelController', function($scope) {
-    $scope.currentWord = "GUTSCHEIN FUER DIE CONNEWITZER VERLAGSBUCHHA-    NDLUNG     ";
+    $scope.currentWord = "GUTSCHEIN FUER DIE CONNEWITZER VERLAGSBUCH-     HANDLUNG    ";
 
     var makeLetters = function(word) {
         return word.split('').map(function(character) {
