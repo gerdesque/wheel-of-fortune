@@ -48,6 +48,9 @@ wheel.controller('WheelController', function($scope) {
                     found = true;
                 }
             });
+        if (!found) {
+           document.getElementById('buzzer').play();
+        };
     };
 
 });
